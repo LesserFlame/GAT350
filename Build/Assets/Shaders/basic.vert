@@ -10,7 +10,6 @@ uniform mat4 projection;
 
 void main()
 {
-	//color = vcolor;
 	texcoord = vtexcoord;
 
 	mat4 mvp = projection * view * model;
