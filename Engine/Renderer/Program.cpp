@@ -124,6 +124,8 @@ namespace neu
 
     void Program::SetUniform(const std::string& name, int value)
     {
+        GLint uniform = GetUniform(name);
+        if (uniform != -1) glUniform1i(uniform, value);
     }
 
     GLint Program::GetUniform(const std::string& name)

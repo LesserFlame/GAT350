@@ -1,0 +1,14 @@
+{
+  "program": "shaders/lit/texture.prog",
+  "textures": [
+    "textures/skeleton_diffuse.png",
+    "textures/skeleton_normal.png",
+    "textures/skeleton_specular.png"
+  ],
+  "color": [
+    1,
+    1,
+    1
+  ],
+  "shininess": 32
+} 

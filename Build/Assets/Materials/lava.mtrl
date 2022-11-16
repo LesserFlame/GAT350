@@ -1,0 +1,23 @@
+{
+  "program": "shaders/lit/texture.prog",
+  "textures": [
+    "textures/lava_diffuse.png",
+    "textures/lava_normal.png",
+    "textures/lava_specular.png",
+    "textures/lava_emissive.png"
+  ],
+  "uv_tiling": [
+    25,
+    25
+  ],
+  "uv_offset": [
+    0,
+    0
+  ],
+  "color": [
+    1,
+    1,
+    1
+  ],
+  "shininess": 256
+}

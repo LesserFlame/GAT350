@@ -12,6 +12,7 @@ void main()
 {
 	texcoord = vtexcoord;
 
+
 	mat4 mvp = projection * view * model;
 	vec4 tposition = mvp * vec4(vposition,  1.0);
 

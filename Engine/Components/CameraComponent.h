@@ -1,5 +1,6 @@
 #pragma once 
 #include "Framework/Component.h" 
+#include "Renderer/Program.h"
 
 namespace neu
 {
@@ -8,7 +9,7 @@ namespace neu
 	public:
 		CLASS_DECLARATION(CameraComponent)
 
-			void Update() override;
+		void Update() override;
 
 
 		void SetPerspective(float fov, float aspectRatio, float near, float far);
@@ -18,6 +19,8 @@ namespace neu
 
 		virtual bool Write(const rapidjson::Value& value) const override;
 		virtual bool Read(const rapidjson::Value& value) override;
+
+		void SetProgram(std::shared_ptr<Program> programs);
 
 	public:
 		glm::mat4 m_projection{ 1 };

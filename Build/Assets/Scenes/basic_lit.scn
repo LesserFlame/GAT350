@@ -2,7 +2,7 @@
   "actors": [
     {
       "type": "Actor",
-      "name": "Ogre",
+      "name": "Cow",
       "transform": {
         "position": [
           0,
@@ -16,15 +16,15 @@
         ],
         "rotation": [
           0,
-          0,
+          180,
           0
         ]
       },
       "components": [
         {
           "type": "ModelComponent",
-          "model_name": "Models/ogre.obj",
-          "material_name": "Materials/ogre.mtrl"
+          "model_name": "Models/spot.obj",
+          "material_name": "Materials/cow.mtrl"
         }
       ]
     },
@@ -33,29 +33,19 @@
       "name": "Light",
       "transform": {
         "position": [
-          5,
           0,
-          0
+          0,
+          -5
 
         ]
       },
       "components": [
         {
           "type": "LightComponent",
-          "ambient": [
-            0.2,
-            0.2,
-            0.2
-          ],
-          "diffuse": [
-            1,
-            1,
-            1
-          ],
-          "specular": [
-            1,
-            1,
-            1
+          "color": [
+            0.5,
+            0.5,
+            0.5
           ]
         }
       ]

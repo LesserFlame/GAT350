@@ -1,50 +1,6 @@
 #include "Engine.h"
 #include <iostream>
 
-float vertices[] = {
-	 0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	-0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-	-0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	-0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-
-	-0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	-0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-
-	 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	 0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	 0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	 0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	 0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	-0.5f, -0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	-0.5f, -0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-
-	-0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f,
-	 0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f,
-	 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	 0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 1.0f, 0.0f,
-	-0.5f,  0.5f,  0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 0.0f,
-	-0.5f,  0.5f, -0.5f, 1.0f, 1.0f, 1.0f, 0.0f, 1.0f
-};
-
 int main(int argc, char** argv)
 {
 	LOG("Application Started...");
@@ -57,41 +13,60 @@ int main(int argc, char** argv)
 
 	neu::g_renderer.CreateWindow("Neumont", 800, 600);
 	LOG("Window Initialized...");
+	neu::g_gui.Initialize(neu::g_renderer);
 
 	// load scene 
-	auto scene = std::make_unique<neu::Scene>();
+	auto scene = neu::g_resources.Get<neu::Scene>("scenes/texture.scn");
 
-	rapidjson::Document document;
-	bool success = neu::json::Load("scenes/basic_lit.scn", document);
-	if (!success)
-	{
-		LOG("error loading scene file %s.", "scenes/basic_lit.scn");
-	}
-	else
-	{
-		scene->Read(document);
-		scene->Initialize();
-	}
-
+	glm::vec3 pos = {0, 0, 0};
 	bool quit = false;
 	while (!quit)
 	{
 		neu::Engine::Instance().Update();
+		neu::g_gui.BeginFrame(neu::g_renderer);
 		if (neu::g_inputSystem.GetKeyState(neu::key_escape) == neu::InputSystem::KeyState::Pressed) quit = true;
 		
-		auto actor = scene->GetActorFromName("Ogre");
-		if (actor)
+
+		//auto actor = scene->GetActorFromName("Ogre");
+		//if (actor)
+		//{
+			//actor->m_transform.rotation.x += neu::g_time.deltaTime * 90.0f;
+			//actor->m_transform.rotation.y += neu::g_time.deltaTime * 90.0f;
+			//actor->m_transform.rotation.z += neu::g_time.deltaTime * 90.0f;
+		//}
+
+		//auto actor = scene->GetActorFromName("Light");
+		//if (actor)
+		//{
+			// move light using sin wave 
+		//	actor->m_transform.position = pos;
+		//}
+
+		auto material = neu::g_resources.Get<neu::Material>("Materials/lava.mtrl");
+		if (material) 
 		{
-			actor->m_transform.rotation.y += neu::g_time.deltaTime * 90.0f;
+			material->uv_offset.x += neu::g_time.deltaTime / 100;
+			material->uv_offset.y += neu::g_time.deltaTime / 200;
 		}
+
+		ImGui::Begin("Hello!");
+		ImGui::Button("Press Me!");
+		ImGui::SliderFloat3("Position", &pos[0], -5.0f, 5.0f);
+
+		ImGui::End();
 
 		scene->Update();
 
 		neu::g_renderer.BeginFrame();
 
-		scene->Draw(neu::g_renderer);
+		scene->PreRender(neu::g_renderer);
+		scene->Render(neu::g_renderer);
+
+		//scene->Draw(neu::g_renderer);
+		neu::g_gui.Draw();
 
 		neu::g_renderer.EndFrame();
+		neu::g_gui.EndFrame();
 	}
 
 	scene->RemoveAll();

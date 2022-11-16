@@ -19,16 +19,12 @@ namespace neu
 
 		std::shared_ptr<Program> GetProgram() { return m_program; }
 
-		//bool Get(const rapidjson::Value& value, const std::string& name, glm::vec2& data);
-		//bool Get(const rapidjson::Value& value, const std::string& name, glm::vec3& data);
-		//bool Get(const rapidjson::Value& value, const std::string& name, glm::vec4& data);
-
-
 	public:
-		glm::vec3 ambient;
-		glm::vec3 diffuse;
-		glm::vec3 specular;
+		glm::vec3 color;
 		float shininess = 0;
+
+		glm::vec2 uv_tiling{ 1, 1 };
+		glm::vec2 uv_offset{ 0, 0 };
 
 	private:
 		std::shared_ptr<Program> m_program;
