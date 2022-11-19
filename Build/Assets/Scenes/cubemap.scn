@@ -1,15 +1,15 @@
 {
+  "clear_color": [ 0, 0, 0 ],
+  "ambient_color": [ 0.2, 0.2, 0.2 ],
   "actors": [
     {
-      "clear_color": [ 0, 0, 0 ],
-      "ambient_color": [ 0.2, 0.2, 0.2 ],
       "type": "Actor",
       "name": "Skybox",
       "components": [
         {
           "type": "ModelComponent",
           "model_name": "Models/cube.obj",
-          "material_name": "Materials/skybox.mtrl", 
+          "material_name": "Materials/skybox.mtrl",
           "depth_test": false
         }
       ]
@@ -21,7 +21,7 @@
         "position": [
           0,
           -1,
-          -2
+          0
         ],
         "scale": [
           0.1,
@@ -38,7 +38,7 @@
         {
           "type": "ModelComponent",
           "model_name": "Models/skeleton.glb",
-          "material_name": "Materials/skeleton.mtrl"
+          "material_name": "Materials/reflection_refraction.mtrl"
         }
       ]
     },
@@ -52,9 +52,9 @@
           -2
         ],
         "scale": [
-          50,
+          10,
           1,
-          50
+          10
         ],
         "rotation": [
           0,
@@ -66,7 +66,7 @@
         {
           "type": "ModelComponent",
           "model_name": "Models/plane.obj",
-          "material_name": "Materials/lava.mtrl"
+          "material_name": "Materials/rocks.mtrl"
         }
       ]
     },
@@ -75,8 +75,8 @@
       "name": "Light",
       "transform": {
         "position": [
-          0,
-          3,
+          -2,
+          2,
           0
         ],
         "rotation": [
@@ -93,9 +93,9 @@
             0,
             0
           ],
-          "type_name": "point",
-          "cutoff": 45.0,
-          "exponent": 20.0
+          "type_name": "spot",
+          "cutoff": 25.0,
+          "exponent": 10.0
         }
       ]
     },
@@ -104,9 +104,14 @@
       "name": "Light2",
       "transform": {
         "position": [
-          5,
-          3,
-          1
+          0,
+          2,
+          0
+        ],
+        "rotation": [
+          85,
+          0,
+          0
         ]
       },
       "components": [
@@ -117,7 +122,36 @@
             1,
             0
           ],
-          "type_name": "point",
+          "type_name": "spot",
+          "cutoff": 25.0,
+          "exponent": 10.0
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "name": "Light3",
+      "transform": {
+        "position": [
+          2,
+          2,
+          0
+        ],
+        "rotation": [
+          85,
+          0,
+          0
+        ]
+      },
+      "components": [
+        {
+          "type": "LightComponent",
+          "color": [
+            0,
+            0,
+            1
+          ],
+          "type_name": "spot",
           "cutoff": 25.0,
           "exponent": 10.0
         }
@@ -147,7 +181,8 @@
         },
         {
           "type": "CameraController",
-          "speed": 4
+          "speed": 4,
+          "sensitivity": 0.5
         }
       ]
     }
