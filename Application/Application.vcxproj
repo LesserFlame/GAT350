@@ -149,6 +149,7 @@
     <None Include="..\Build\Assets\Materials\lava.mtrl" />
     <None Include="..\Build\Assets\Materials\multi.mtrl" />
     <None Include="..\Build\Assets\Materials\ogre.mtrl" />
+    <None Include="..\Build\Assets\Materials\postprocess.mtrl" />
     <None Include="..\Build\Assets\Materials\reflection.mtrl" />
     <None Include="..\Build\Assets\Materials\reflection_reflaction.mtrl" />
     <None Include="..\Build\Assets\Materials\refraction.mtrl" />
@@ -200,6 +201,9 @@
     <None Include="..\Build\Assets\Shaders\Lit\texture_normal_specular_emissive.frag" />
     <None Include="..\Build\Assets\Shaders\Lit\texture_normal_specular_emissive.prog" />
     <None Include="..\Build\Assets\Shaders\Lit\texture_normal_specular_emissive.vert" />
+    <None Include="..\Build\Assets\Shaders\PostProcess\postprocess.frag" />
+    <None Include="..\Build\Assets\Shaders\PostProcess\postprocess.prog" />
+    <None Include="..\Build\Assets\Shaders\PostProcess\postprocess.vert" />
     <None Include="..\Build\Assets\Shaders\Unlit\color.frag" />
     <None Include="..\Build\Assets\Shaders\Unlit\color.prog" />
     <None Include="..\Build\Assets\Shaders\Unlit\color.vert" />

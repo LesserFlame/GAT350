@@ -1,6 +1,8 @@
 #include "Engine.h"
 #include <iostream>
 
+#define POST_PROCESS 
+
 int main(int argc, char** argv)
 {
 	LOG("Application Started...");
@@ -17,7 +19,8 @@ int main(int argc, char** argv)
 
 	//create framebuffer texture
 	auto texture = std::make_shared<neu::Texture>();
-	texture->CreateTexture(512, 512);
+	//texture->CreateTexture(64, 64);
+	texture->CreateTexture(1024, 1024);
 	neu::g_resources.Add<neu::Texture>("fb_texture", texture);
 
 	//create framebuffer
@@ -73,6 +76,13 @@ int main(int argc, char** argv)
 			program->SetUniform("ri", ri);
 		}
 
+		program = neu::g_resources.Get<neu::Program>("shaders/postprocess/postprocess.prog");
+		if (program)
+		{
+			program->Use();
+			program->SetUniform("offset", neu::g_time.time);
+		}
+
 		ImGui::Begin("Transform!");
 		ImGui::DragFloat3("Rotation", &rot[0]);
 		ImGui::DragFloat("Refraction", &ri, 0.01f, 1, 3);
@@ -81,6 +91,43 @@ int main(int argc, char** argv)
 		ImGui::End();
 
 		scene->Update();
+
+#ifdef POST_PROCESS 
+		// don't draw post process actor when rendering to the framebuffer 
+		{
+			auto actor = scene->GetActorFromName("PostProcess");
+			if (actor)
+			{
+				actor->SetActive(false);
+			}
+		}
+		// render pass 1 (render scene to framebuffer) 
+		neu::g_renderer.SetViewport(0, 0, framebuffer -> GetSize().x, framebuffer->GetSize().y);
+		framebuffer->Bind();
+		neu::g_renderer.BeginFrame();
+		scene->PreRender(neu::g_renderer);
+		scene->Render(neu::g_renderer);
+		framebuffer->Unbind();
+
+		// render pass 2 (render to screen) 
+		neu::g_renderer.RestoreViewport();
+		neu::g_renderer.BeginFrame();
+		scene->PreRender(neu::g_renderer);
+
+		// draw only the post process actor to the screen 
+		{
+			auto actor = scene->GetActorFromName("PostProcess");
+			if (actor)
+			{
+				actor->SetActive(true);
+				actor->Draw(neu::g_renderer);
+			}
+		}
+#else 
+		neu::g_renderer.BeginFrame();
+		scene->PreRender(neu::g_renderer);
+		scene->Render(neu::g_renderer);
+#endif // POST_PROCESS 
 
 		{
 			auto actor = scene->GetActorFromName("RTT");
@@ -91,9 +138,8 @@ int main(int argc, char** argv)
 		}
 
 		//render pass 1 (render to framebuffer)
-		glViewport(0, 0, 512, 512);
+		neu::g_renderer.SetViewport(0, 0, framebuffer->GetSize().x, framebuffer->GetSize().y);
 		framebuffer->Bind();
-
 		neu::g_renderer.BeginFrame();
 
 		scene->PreRender(neu::g_renderer);
@@ -110,8 +156,7 @@ int main(int argc, char** argv)
 		}
 
 		//render pass 2 (render to screen)
-		glViewport(0, 0, 800, 600);
-
+		neu::g_renderer.RestoreViewport();
 		neu::g_renderer.BeginFrame();
 
 		scene->PreRender(neu::g_renderer);
