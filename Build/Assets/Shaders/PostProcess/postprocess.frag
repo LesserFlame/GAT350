@@ -19,8 +19,9 @@ void main()
  //float avg = (color.r + color.g + color.b) / 3.0; 
  //fcolor = vec4(vec3(avg), 1); 
  
+ color = color;
  // invert 
- fcolor = vec4(1.0 - color, 1.0); 
+ fcolor = vec4(color, 1.0); 
 
  ////scanline
  // get the screen y position (uv coordinates range 0 <-> 1) 
