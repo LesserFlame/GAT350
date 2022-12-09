@@ -7,12 +7,13 @@
 
 void InitScene01(Scene& scene);
 void InitScene02(Scene& scene);
+void InitScene03(Scene& scene);
 
 int main(int, char**)
 {
 	const int width = 800;
 	const int height = 600;
-	const int samples = 100;
+	const int samples = 50;
 	const float fov = 30;
 
 	Renderer renderer;
@@ -20,11 +21,12 @@ int main(int, char**)
 	renderer.CreateWindow(width, height);
 
 	Canvas canvas(width, height, renderer);
-	Camera camera({ 0, 4, 4 }, { 0, 0, 0 }, { 0, 1, 0 }, 60.0f, width / (float)height);
+	Camera camera({ 0, 1, 4 }, { 0, 0, 0 }, { 0, 1, 0 }, 60.0f, width / (float)height);
+	//Camera camera({ 0, 4, 4 }, { 0, 0, 0 }, { 0, 1, 0 }, 60.0f, width / (float)height);
 	//Camera camera({ 13, 2, 3 }, { 0, 0, 0 }, { 0, 1, 0 }, fov, width / (float)height);
 	Scene scene{ {1, 0.5f, 0.5f}, {0.5f, 0.5f, 1}};
 
-	InitScene01(scene);
+	InitScene03(scene);
 
 	//scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, -100.5f, -1 }, 100.0f, std::make_unique<Lambertian>(color3{ 0.2f, 0.2f, 0.2f })));
 
@@ -114,4 +116,34 @@ void InitScene02(Scene& scene)
 			}
 		}
 	}
+}
+
+void InitScene03(Scene& scene)
+{
+	//light
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 5, 5, 5 }, 1.0f, std::make_unique<Emissive>(color3{ 40.0f, 40.0f, 40.0f })));
+
+	scene.AddObject(std::make_unique<Plane>(glm::vec3{ 0, -0.5, 0 }, glm::vec3{ 0, 1, 0 }, std::make_unique<Lambertian>(color3{ 0.9f, 0.9f, 1.0f })));
+
+	//body
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, 0, -1 }, 0.75f, std::make_unique<Lambertian>(color3{ 1.0f, 1.0f, 1.0f })));
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, 0.9, -1 }, 0.5f, std::make_unique<Lambertian>(color3{ 1.0f, 1.0f, 1.0f })));
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, 1.5, -1 }, 0.4f, std::make_unique<Lambertian>(color3{ 1.0f, 1.0f, 1.0f })));
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0.5, 1, -1 }, 0.2f, std::make_unique<Lambertian>(color3{ 1.0f, 1.0f, 1.0f })));
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ -0.5, 1, -1 }, 0.2f, std::make_unique<Lambertian>(color3{ 1.0f, 1.0f, 1.0f })));
+
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, 1.7, -1.2 }, 0.35f, std::make_unique<Lambertian>(color3{ 0.8f, 0.1f, 0.1f })));
+	
+	//face
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, 1.4, 0 }, 0.05f, std::make_unique<Lambertian>(color3{ 0.9f, 0.7f, 0.1f })));
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ -0.1, 1.52, 0 }, 0.05f, std::make_unique<Lambertian>(color3{ 0.1f, 0.1f, 0.1f })));
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0.1, 1.55, 0 }, 0.05f, std::make_unique<Lambertian>(color3{ 0.1f, 0.1f, 0.1f })));
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0.2, 1.3, 0 }, 0.05f, std::make_unique<Lambertian>(color3{ 0.1f, 0.1f, 0.1f })));
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ -0.2, 1.34, 0 }, 0.05f, std::make_unique<Lambertian>(color3{ 0.1f, 0.1f, 0.1f })));
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, 1.255, 0 }, 0.05f, std::make_unique<Lambertian>(color3{ 0.1f, 0.1f, 0.1f })));
+
+	//buttons
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, 0.1, 0 }, 0.05f, std::make_unique<Lambertian>(color3{ 0.1f, 0.1f, 0.1f })));
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, 0.5, 0 }, 0.05f, std::make_unique<Lambertian>(color3{ 0.1f, 0.1f, 0.1f })));
+	scene.AddObject(std::make_unique<Sphere>(glm::vec3{ 0, 0.9, 0 }, 0.05f, std::make_unique<Lambertian>(color3{ 0.1f, 0.1f, 0.1f })));
 }
