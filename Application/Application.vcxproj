@@ -145,6 +145,7 @@
   <ItemGroup>
     <None Include="..\Build\Assets\Materials\box.mtrl" />
     <None Include="..\Build\Assets\Materials\cow.mtrl" />
+    <None Include="..\Build\Assets\Materials\dirt.mtrl" />
     <None Include="..\Build\Assets\Materials\grass.mtrl" />
     <None Include="..\Build\Assets\Materials\lava.mtrl" />
     <None Include="..\Build\Assets\Materials\multi.mtrl" />
@@ -156,13 +157,17 @@
     <None Include="..\Build\Assets\Materials\rock.mtrl" />
     <None Include="..\Build\Assets\Materials\rocks.mtrl" />
     <None Include="..\Build\Assets\Materials\rtt.mtrl" />
+    <None Include="..\Build\Assets\Materials\shrub.mtrl" />
     <None Include="..\Build\Assets\Materials\skeleton.mtrl" />
     <None Include="..\Build\Assets\Materials\skybox.mtrl" />
     <None Include="..\Build\Assets\Materials\spamton.mtrl" />
+    <None Include="..\Build\Assets\Materials\spider.mtrl" />
+    <None Include="..\Build\Assets\Materials\tree.mtrl" />
     <None Include="..\Build\Assets\Scenes\basic.scn" />
     <None Include="..\Build\Assets\Scenes\basic_lit.scn" />
     <None Include="..\Build\Assets\Scenes\cow_scene.scn" />
     <None Include="..\Build\Assets\Scenes\cubemap.scn" />
+    <None Include="..\Build\Assets\Scenes\final.scn" />
     <None Include="..\Build\Assets\Scenes\rtt.scn" />
     <None Include="..\Build\Assets\Scenes\texture.scn" />
     <None Include="..\Build\Assets\Shaders\basic.frag" />

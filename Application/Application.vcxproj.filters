@@ -242,5 +242,20 @@
     <None Include="..\Build\Assets\Materials\postprocess.mtrl">
       <Filter>Resource Files\Materials</Filter>
     </None>
+    <None Include="..\Build\Assets\Scenes\final.scn">
+      <Filter>Resource Files\Scenes</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\spider.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\dirt.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\tree.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
+    <None Include="..\Build\Assets\Materials\shrub.mtrl">
+      <Filter>Resource Files\Materials</Filter>
+    </None>
   </ItemGroup>
 </Project>

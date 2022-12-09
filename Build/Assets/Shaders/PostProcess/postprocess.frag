@@ -16,20 +16,23 @@ void main()
 
  vec3 color = texture(textureMap, texcoord).rgb; 
  // black / white 
- //float avg = (color.r + color.g + color.b) / 3.0; 
- //fcolor = vec4(vec3(avg), 1); 
+ float avg = (color.r + color.g + color.b) / 3.0; 
+ fcolor = vec4(vec3(avg), 1); 
  
- color = color;
  // invert 
+ //color = 1.0 - color;
+ //fcolor = vec4(color, 1.0);
+
+ color = (color * (color.r + color.g + color.b)); //makes the saturation wonky (on purpose)
  fcolor = vec4(color, 1.0); 
 
  ////scanline
- // get the screen y position (uv coordinates range 0 <-> 1) 
-// int y = int(texcoord.y * screen_height); 
-// // set the alpha based on the modulus of the y position 
-// float alpha = (y % 3 != 0) ? 1 : 0; 
-// 
-// fcolor = vec4(color * alpha, 1); 
+ //get the screen y position (uv coordinates range 0 <-> 1) 
+ int y = int(texcoord.y * screen_height); 
+ // set the alpha based on the modulus of the y position 
+ float alpha = (y % 3 != 0) ? 1 : 0; 
+ 
+ fcolor = vec4(color * alpha, 1); 
 
  // wave 
  //vec2 ttexcoord = texcoord; 

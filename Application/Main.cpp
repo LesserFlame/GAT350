@@ -28,7 +28,7 @@ int main(int argc, char** argv)
 	framebuffer->Unbind();
 
 	// load scene 
-	auto scene = neu::g_resources.Get<neu::Scene>("scenes/rtt.scn");
+	auto scene = neu::g_resources.Get<neu::Scene>("scenes/final.scn");
 	glm::vec3 rot = {0, 0, 0};
 	float ri = 1;
 	float interpolation = 0.5f;
@@ -48,11 +48,11 @@ int main(int argc, char** argv)
 			//actor->m_transform.rotation.z += neu::g_time.deltaTime * 90.0f;
 		//}
 
-		auto actor = scene->GetActorFromName("Skeleton");
-		if (actor)
+		//auto actor = scene->GetActorFromName("Skeleton");
+		/*if (actor)
 		{
 			actor->m_transform.rotation = math::EulerToQuaternion(rot);
-		}
+		}*/
 
 		//auto actor = scene->GetActorFromName("Light");
 		//if (actor)
