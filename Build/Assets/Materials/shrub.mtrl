@@ -1,0 +1,22 @@
+{
+  "program": "shaders/lit/texture.prog",
+  "textures": [
+    "textures/shrub/shrub_diffuse.png",
+    "textures/shrub/shrub_normal.png",
+    "textures/shrub/shrub_specular.png"
+  ],
+  "uv_tiling": [
+    1,
+    1
+  ],
+  "uv_offset": [
+    0,
+    0
+  ],
+  "color": [
+    1,
+    1,
+    1
+  ],
+  "shininess": 256
+}

@@ -41,7 +41,7 @@ namespace neu
 	void LightComponent::SetProgram(std::shared_ptr<Program> program, int index)
 	{
 		glm::vec4 position = g_renderer.GetView() * glm::vec4(m_owner ->m_transform.position, 1);
-		glm::vec3 direction = m_owner->m_transform.getForward();
+		glm::vec3 direction = g_renderer.GetView() * glm::vec4(m_owner->m_transform.getForward(), 0);
 
 		// create array light name from index (lights[0], ...) 
 		std::string lightName = "lights[" + std::to_string(index) + "]";

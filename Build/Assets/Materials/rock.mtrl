@@ -1,10 +1,20 @@
-{ 
-    "program":"shaders/basic_phong.prog", 
-    "texture":"textures/rock.jpg", 
-    "color":[ 
-        1, 
-        1, 
-        1 
-    ],
-    "shininess":100
-} 
+{
+  "program": "shaders/lit/texture.prog",
+  "textures": [
+    "textures/rock.jpg"
+  ],
+  "uv_tiling": [
+    1,
+    1
+  ],
+  "uv_offset": [
+    0,
+    0
+  ],
+  "color": [
+    1,
+    1,
+    1
+  ],
+  "shininess": 256
+}

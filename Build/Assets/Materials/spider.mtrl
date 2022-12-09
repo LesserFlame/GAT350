@@ -1,0 +1,14 @@
+{
+  "program": "shaders/lit/texture.prog",
+  "textures": [
+    "textures/spider/spider_diffuse.png",
+    "textures/spider/spider_normal.png",
+    "textures/spider/spider_specular.png"
+  ],
+  "color": [
+    1,
+    1,
+    1
+  ],
+  "shininess": 32
+} 
